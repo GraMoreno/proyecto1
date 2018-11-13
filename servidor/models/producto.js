@@ -8,7 +8,7 @@ var ProductSchema = Schema({
     nombre: {type: string, required: true},
     descripcion: {type: string, required: true},
     precio: {type: number, required: true},
-    categoria: {type: string, required: true},
+    categoria: {type: schema.ObjectId, ref:'categorias'},
     imagen: {type: string, required: true}
 });
 // export module
