@@ -26,3 +26,9 @@ let crearConsulta=(req,res)=>{
         return res.send({mensaje:"No se pudo crear", error:errorCreando})
     })
 }
+
+//exportar modulos
+module.exports={
+    listarConsultas,
+    crearConsulta,
+}
