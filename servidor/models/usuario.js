@@ -4,8 +4,8 @@ var mongoose= require('mongoose');
 var Schema= mongoose.schema;
 //create of model
 var UserSchema = Schema({
-    nombre: {type:string, required: true},
-    email: {type:string, required: true}
+    nombre: {type:String, required: true},
+    email: {type:String, required: true}
 });
 // export module
 module.exports = mongoose.model('user', UserSchema);

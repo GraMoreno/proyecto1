@@ -4,11 +4,11 @@ var mongoose= require('mongoose');
 var Schema= mongoose.schema;
 //create of modelo de consulta del usuario
 let modeloConsultUser= Schema({
-    idUsuario:{type: schema.ObjectId, require: true},
-    idProducto:{type: schema.ObjectId, require: true},
-    textoConsulta: {type: string,require: true},
-    fecha:{type:Date, require:true},
-    respondido:{type:boolean},
+    idUsuario:{type: Schema.ObjectId, ref:'usuario'},
+    idProducto:{type: Schema.ObjectId, ref:'producto'},
+    textoConsulta: {type: String,require: true},
+    fecha:{type:String, require:true},
+    respondido:{type:Boolean},
 });
 
 // exportamos

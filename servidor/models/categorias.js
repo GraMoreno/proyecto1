@@ -4,8 +4,8 @@ var mongoose= require('mongoose');
 var Schema= mongoose.schema;
 //create of model
 let modeloCategoria = Schema( {
-    nombre:{type: string, require: true},
-    descripcion: {type: string,require: true}
+    nombre:{type: String, require: true},
+    descripcion: {type: String,require: true}
 });
 
 module.exports = mongoose.model('categorias',modeloCategoria);

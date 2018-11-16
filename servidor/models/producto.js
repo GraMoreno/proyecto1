@@ -1,15 +1,15 @@
 //import mongoose
 var mongoose= require('mongoose');
 //create objet schema
-var Schema= mongoose.schema;
+var Schema= mongoose.Schema;
 //create of model
 var ProductSchema = Schema({
-    codigo:{type: number, required: true},
-    nombre: {type: string, required: true},
-    descripcion: {type: string, required: true},
-    precio: {type: number, required: true},
-    categoria: {type: schema.ObjectId, ref:'categorias'},
-    imagen: {type: string, required: true}
+    codigo:{type: String, required: true},
+    nombre: {type: String, required: true},
+    descripcion: {type: String, required: true},
+    precio: {type: Number, required: true},
+    categoria: {type: Schema.ObjectId, ref:'categorias'},
+    imagen: {type: String, required: true}
 });
 // export module
 module.exports = mongoose.model('product', ProductSchema);
