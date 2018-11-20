@@ -1,7 +1,7 @@
 //import mongoose
 var mongoose= require('mongoose');
 //create objet schema
-var Schema= mongoose.schema;
+var Schema= mongoose.Schema;
 //create of model
 var UserSchema = Schema({
     nombre: {type:String, required: true},

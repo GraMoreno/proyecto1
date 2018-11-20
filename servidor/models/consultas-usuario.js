@@ -1,7 +1,7 @@
 //import mongoose
 var mongoose= require('mongoose');
 //create objet schema
-var Schema= mongoose.schema;
+var Schema= mongoose.Schema;
 //create of modelo de consulta del usuario
 let modeloConsultUser= Schema({
     idUsuario:{type: Schema.ObjectId, ref:'usuario'},
