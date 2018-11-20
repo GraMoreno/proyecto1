@@ -11,10 +11,10 @@ const mongoose= require('mongoose');
 const bodyparser = require ('body-parser');
 // para hacer las peticiones Posts
 app.use(bodyparser.urlencoded({extended:false}));
-app.use (bodyparser.json());
+app.use(bodyparser.json());
 
 //connecting databases
-mongoose.connect('mongodb://localhost/producto')
+mongoose.connect('mongodb://localhost/proyjoyeria')
 .then(db => console.log('base de datos conectada'))
 .catch(err => console.log(err));
 
