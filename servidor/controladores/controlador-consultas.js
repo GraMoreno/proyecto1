@@ -1,16 +1,16 @@
 //importamos los modelos de moongose para acceder a sus métodos
-var Usuario = require("../models/usuario");
+var Cliente = require("../models/cliente");
 var Producto = require("../models/producto");
 var Consulta= require("../models/consultas-usuario");
 
 let listarConsultas = (req,res)=> {
-    let usuario = Usuario.findById(req.params.id);
+    let cliente = Cliente.findById(req.params.id);
     let consulta = Consulta.find({producto:req.params.id});
 
     //ejecutamos el metodo find para obtener los usuarios
     Producto.find()
     .then ((consulta)=>{
-        return res.send(usuario)
+        return res.send(cliente)
     })
     .catch((err)=>{
         return res.send(err)

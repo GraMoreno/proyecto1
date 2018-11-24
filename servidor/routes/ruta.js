@@ -6,7 +6,7 @@ let catController = require('../controladores/controlador-categorias');
 //Importamos el controlador del elemento producto
 let prodController = require('../controladores/controlador-productos');
 //Importamos el controlador del elemento usuarios
-let userController= require('../controladores/controlador-usuarios');
+let cliController= require('../controladores/controlador-cliente');
 //Importamos el controlador del elemento consultas del usuario
 let consuController = require('../controladores/controlador-consultas');
 
@@ -24,14 +24,14 @@ router.post('/productos',prodController.crearProducto);
 router.get('/productos/:id',prodController.verProducto);
 router.get('/productos/:id',prodController.eliminarProducto);
 
-//rutas de usuario
-router.get('/usuarios',userController.listarUsuarios);
-router.post('/usuarios',userController.crearUsuario);
-router.get('/usuarios/:id',userController.verUsuario);
+//rutas de cliente
+router.get('/clientes',cliController.listarClientes);
+router.post('/clientes',cliController.crearCliente);
+router.get('/clientes/:id',cliController.verCliente);
 
-//rutas de consultas del usuario
-router.get ('/consultasUsuario',consuController.listarConsultas);
-router.post ('/consultaUsuario',consuController.crearConsulta);
+//rutas de consultas del cliente
+router.get ('/consultaCliente',consuController.listarConsultas);
+router.post ('/consultaCliente',consuController.crearConsulta);
 
 
 //router.get('/', (req, res)=>{
