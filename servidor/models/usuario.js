@@ -5,7 +5,8 @@ var Schema= mongoose.Schema;
 //create of model
 var UserSchema = Schema({
     nombre: {type:String, required: true},
-    email: {type:String, required: true}
+    email: {type:String, required: true},
+    password: {type:String, required: true}
 });
 // export module
 module.exports = mongoose.model('user', UserSchema);
