@@ -1,6 +1,6 @@
 //Middleware para verificar que el usuario este logueado al realizar una request
 
-"use strict";
+'use strict'
 
 // Importamos jwy y moment
 var jwt = require("jwt-simple");
