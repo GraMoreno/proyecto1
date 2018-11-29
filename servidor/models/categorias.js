@@ -9,3 +9,10 @@ let modeloCategoria = Schema({
 });
 
 module.exports = mongoose.model('categorias',modeloCategoria);
+
+let referenceCategoria = Schema({
+    nombre: { type: String, require: true },
+    descripcion: { type: String, require: true }
+});
+
+module.exports = mongoose.model('categorias', referenceCategoria);
