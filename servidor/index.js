@@ -33,6 +33,8 @@ app.use((req, res, next) => {
 
   //connecting databases
 let direccionBaseDatos ='mongodb://localhost/proyjoyeria';
+//let direccionBaseDatos = "mongodb://meanblog:meanblog1234@ds237832.mlab.com:37832/meanblog"; 
+
 //mongoose.connect('mongodb://localhost/proyjoyeria')
 //.then(db => console.log('base de datos conectada'))
 //.catch(err => console.log(err));
@@ -55,8 +57,7 @@ mongoose.connect(
   }
 );
 
-//importando rutas
-const indexRouter = require('./routes/ruta');
+
 
 //middlewares
 //para entender los datos que envia un formulario
@@ -70,12 +71,22 @@ app.get ('/hola', (req,res)=>{
     res.send({mensaje});
 })
 
-//var usuario1 = Boolean = false;
+
+//importando rutas
+const indexRouter = require('./routes/ruta');
+//const usuarioRouter = require('./routes/usuario');
+//const categoriaRouter = require('./routes/categoria');
+//const productoRouter = require('./routes/producto');
+
+
 //routers
-//if (usuario1 == true) {
-//  app.use(require('./routes/usuario'));
-//}
+
 app.use(indexRouter);
+//app.use('/api',usuarioRouter);
+//app.use(usuarioRouter);
+//app.use(categoriaRouter);
+//app.use(productoRouter);
+
 
 //starting the server
 //app.listen(app.get('port'),()=>{
