@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,14 @@ import { HttpClient } from '@angular/common/http';
 
 export class UsuarioService {
   public logueado = false;
-  constructor(public http: HttpClient) {
+  selectedUser: Usuario;
+  usuarios: Usuario[];
 
+  readonly URL_API= 'http://localhost:3000/api/usuarios';
+
+  constructor(public http: HttpClient) {
+    this.selectedUser = new Usuario();
+    
     const token = localStorage.getItem('token');
     if (token) {
       this.logueado = true;
@@ -24,13 +31,22 @@ export class UsuarioService {
     localStorage.clear();
   }
 
-  async login(email, password) {
+  getUser(){
+    return this.http.get(this.URL_API);
+  }
+  postUser(user : Usuario){
+    return this.http.post(this.URL_API, user);
+  }
+ 
+
+  async login(nombre, email, password) {
     return new Promise((resolve, reject) => {
       const body = {
+        nombre,
         email,
         password
       };
-      this.http.post('http://localhost:3000/usuarios/login', body).toPromise()
+      this.http.post(this.URL_API + `/login`, body).toPromise()
         .then((respuesta: { token: string }) => {
           console.log(respuesta);
           localStorage.setItem('token', respuesta.token);
