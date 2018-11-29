@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UsuarioService} from '../../services/usuario.service';
+import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-crear-user',
@@ -8,20 +10,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./crear-user.component.css']
 })
 export class CrearUserComponent implements OnInit {
-  //user: Array <any>;
-  public nombre: string;
-  public email: string;
-  public password: string;
+  usuario: Object;
 
   constructor(private userSv: UsuarioService, public router: Router) { }
 
   ngOnInit() {
   }
-  onRegister(){
-//    this.userSv.getUserDetails()
-//    .then((ok)=>{
-//      console.log ("ingreso un usuario");
-//      this.router.navigateByUrl('perfil');
-//    })
+  resetform(form? : NgForm){
+   if(form != null){
+    form.reset();
+    this.userSv.selectedUser = new Usuario();
+    //this.usuario = {
+    //  nombre : '',
+     // email :'',
+     // password :'',
+    //}
+
+   }
   }
+
+  addUsuario (form: NgForm){
+   console.log(form.value);
+   //this.userSv.postUser(form.value)
+   //.subscribe( res=>{
+   // console.log (form.value)
+   //});
+
+  }
+  
 }
