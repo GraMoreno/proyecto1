@@ -38,3 +38,12 @@
 
 
 
+
+  <select [(ngModel)]="categoria">
+    <option *ngFor="let categoria of categorias" 
+    [value]="categoria.id">
+      {{ categoria.nombre }}
+    </option>
+  </select>
+
+</ul>
