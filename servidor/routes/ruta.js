@@ -12,13 +12,17 @@ let cliController= require('../controladores/controlador-cliente');
 //Importamos el controlador del elemento consultas del cliente
 let consuController = require('../controladores/controlador-consultas');
 
-//router.get('/',(req,res,next)=>{
-//    res.send("hello world")
-//});
+router.get('/',(req,res,next)=>{
+    res.send("hello world")
+});
 
+// localhost:3000/usuarioa
+router.get('/usuarioa', userController.obtenerUsuario);
+router.post('/usuarioa', userController.crearUsuario);
+router.get('/usuarioa/:id',userController.buscarUsuario);
+router.put('/usuarioa/:id',userController.actualizarUsuario);
+router.delete('/usuarioa/:id', userController.eliminarUsuario);
 
-router.get('/api/usuarios', userController.getUsuario);
-router.post('/api/usuarios', userController.crearUsuario);
 
 //para el resto de los modelos
 
