@@ -14,11 +14,15 @@ import { UsuarioService} from './services/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { VerificarLogueadoService } from './services/verificar-logueado.service';
+import { VerproductosComponent } from './pages/verproductos/verproductos.component';
+import { ProductoComponent } from './pages/producto/producto.component';
 
 export const RUTAS: Routes = [
- { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent},
   { path: 'crearusuario', component: CrearUserComponent },
+  { path: 'verproducto', component:VerproductosComponent},
+  { path: 'productos', component:ProductoComponent},
   //{ path: 'perfil', component: MiPerfilComponent, canActivate: [VerificarLogueadoService] },
   //{ path: 'publicar', component: AgregarEntradaComponent, canActivate: [VerificarLogueadoService] },
   //{ path: 'editar', component: EditarEntradaComponent, canActivate: [VerificarLogueadoService] },
@@ -33,7 +37,9 @@ export const RUTAS: Routes = [
     ConsultasComponent,
     HomeComponent,
     LoginComponent,
-    CrearUserComponent
+    CrearUserComponent,
+    VerproductosComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
