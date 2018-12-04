@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">Productos</span>
+        <form #productoForm="ngForm" (ngSubmit)="addProducto(productoForm)">
+          <div class="form-row">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="ProductoService.selectProducto._id" class="form-control">
+            <div class="form-group col-md-6">
+                
+              <label for="codigo">Código</label>
+              <input type="text" name="codigo" #codigo="ngModel" [(ngModel)]="ProductoService.selectProducto.codigo" class="form-control" placeholder="Codigo del producto">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="nombre">Nombre</label>
+              <input type="text" name="nombre" #name="ngModel" [(ngModel)]="ProductoService.selectProducto.nombre" class="form-control" placeholder="Nombre del producto">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="ProductoService.selectProducto.descripcion" class="form-control" placeholder="Descripción del producto">
+          </div>
+          <div class="form-group">
+            <label for="imagen">Imagen</label>
+            <input type="text" name="imagen" #imagen="ngModel" [(ngModel)]="ProductoService.selectProducto.imagen" class="form-control" placeholder="Imagen del producto">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="precio">Precio</label>
+              <input type="text" name="precio" #precio="ngModel" [(ngModel)]="ProductoService.selectProducto.precio" class="form-control" placeholder="Precio del producto">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="categoria">Categoría</label>
+              <select name="categoria" #categoria="ngModel" [(ngModel)]="ProductoService.selectProducto.categoria" class="form-control">
+               <option selected>Categoría...</option>
+               <option value="1">Collares</option>
+               <option value="2">Anillos</option>
+               <option value="3">Aros</option>
+               <option value="4">Pulseras</option>
+              </select>
+
+            </div>
+             
+          </div>
+          <div class="card-action">
+            <div class="input-field col s12">
+                <button class="btn btn-primary-right" style="margin-left:2px" (click)="resetForm(productoForm)">Clean</button>
+                <button class="btn btn-primary-left" >Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    
+    </div>
+    
+  </div>
+  <div class="col-sm-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Categoria</th>
+          <th>Precio</th>
+          <th>Descripción</th>
+          <th>Operación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of ProductoService.productos">
+          <td> {{prod.nombre}}</td>
+          <td> {{prod.categoria}}</td>
+          <td> {{prod.precio}}</td>
+          <td> {{prod.descripcion}}</td>
+          <td>
+            <a class="action-btn" (click)="editProducto(prod)">
+              <i class="material-icons">edit</i>
+            </a>
+            <a class="action-btn"(click)="deleteProducto(prod._id)">
+              <i class="material-icons md-18">delete</i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+      
+    </table>
+  </div>
+  
+</div>
