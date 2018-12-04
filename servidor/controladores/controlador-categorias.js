@@ -2,7 +2,7 @@
 var Categoria = require("../models/categorias");
 var Producto = require("../models/producto");
 
-let listarCategorias= (req,res)=> {
+let listarCategorias = (req, res)=> {
     //ejecutamos el metodo find para obtener las categorias
     Categoria.find()
     .then ((Categoria)=>{
@@ -13,16 +13,17 @@ let listarCategorias= (req,res)=> {
     })
 }
 
-let crearCategoria= (req,res)=> {
- Categoria.create(req.body).then((categoriaCreada)=>{
-   return res.send({mensaje:"Categoria Creada",detalle:categoriaCreada})
+let crearCategoria = (req , res)=> {
+ Categoria.create(req.body)
+ .then((categoriaCreada)=>{
+   return res.send({mensaje:"Categoria Creada", detalle:categoriaCreada})
  })   
  .catch((errorCreando)=>{
-     return res.send({mensaje:"No se puedo crear categoria",error:errorCreando})
+     return res.send({mensaje:"No se puedo crear categoria", error:errorCreando})
  })
 }
 
-let actualizarCategoria=(req,res)=>{
+let actualizarCategoria = (req,res)=>{
     Categoria.findByIdAndUpdate(req.params.id,req.body)
     .then((categoriaActualizada)=>{
         return res.send({mensaje:"Actualizado"})
@@ -32,7 +33,7 @@ let actualizarCategoria=(req,res)=>{
     })
 }
 
-let verCatergoria=(req,res)=>{
+let verCatergoria = (req, res)=>{
     Categoria.findById(req.params.id)
     .then((Categoria)=>{
         return res.send(Categoria)
@@ -42,7 +43,7 @@ let verCatergoria=(req,res)=>{
     })
 }
 
-let eliminarCategoria=(req,res)=>{
+let eliminarCategoria = (req, res)=>{
     Categoria.findByIdAndRemove(req.params.id)
     .then((catBorrada)=>{
         return res.send({mensaje:"La categoria se elimino correctamente"})
@@ -52,9 +53,9 @@ let eliminarCategoria=(req,res)=>{
     })
 }
 
-let verPorCategoria =(req,res)=>{
-    let categoria =Categoria.findById(req.params.id);
-    let productoDeCategoria=Producto.find({categoria:req.params.id});
+let verPorCategoria = (req, res)=>{
+    let categoria = Categoria.findById(req.params.id);
+    let productoDeCategoria = Producto.find({categoria:req.params.id});
     categoria.then((categoria)=>{
         productoDeCategoria.then((producto)=>{
             res.send ({categoria,Producto})
@@ -69,5 +70,5 @@ module.exports={
     actualizarCategoria,
     verCatergoria,
     eliminarCategoria,
-    verPorCategoria,
+    verPorCategoria
 }

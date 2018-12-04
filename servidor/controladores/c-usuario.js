@@ -1,20 +1,66 @@
+const express = require('express');
+var ObjectId = require('mongoose').Types.ObjectId;
 //importamos los modelos de moongose para acceder a sus métodos
 
-const usuarioCtrl= {};
+var  Usuarioa = require('../models/usuario');
 
-usuarioCtrl.getUsuario = async (req, res)=>{
-    const usuarios = await Usuario.find();
-    res.json(usuarios);
+let obtenerUsuario = (req,res)=>{
+    Usuarioa.find((err, docs) => {
+        if (!err) {res.send(docs);}
+        else {console.log("Error recibiendo usuarios:" + JSON.stringify(err, undefined,2));}
+    });
 };
 
-usuarioCtrl.crearUsuario = (req, res)=>{
-    usuario.create(req.body)
-    .then((usuarioCreado)=>{
-        return res.send({mensaje: "usuario creado", detalles:usuarioCreado})
-    })
-    .catch ((errorCreando)=>{
-        return res.send({ mensaje: "no se pudo crear el usuario", error:errorCreando})
-    })
+let buscarUsuario = (req, res) => {
+    if(!ObjectId.isValid(req.params.id))
+     return res.status(400).send(`no hay registro con el id: ${req.params.id}`);
+
+    Usuarioa.findById(req.params.id, (err, docs)=>{
+        if (!err) {res.send(docs);}
+        else {console.log("Error recibiendo al usuario:" + JSON.stringify(err, undefined,2));}
+    });
 };
 
-module.exports = usuarioCtrl;
+let crearUsuario =  (req, res)=>{
+    var user = new Usuarioa({
+        nombre: req.body.nombre,
+        email: req.body.email,
+        password: req.body.password,
+    });
+    user.save((err, docs)=>{
+        if (!err) {res.send(docs);}
+        else {console.log("Error en save usuarios:" + JSON.stringify(err, undefined,2));}
+    });
+};
+let actualizarUsuario = (req, res) => {
+    if(!ObjectId.isValid(req.params.id))
+     return res.status(400).send(`no hay registro con el id: ${req.params.id}`);
+     var user = {
+        nombre: req.body.nombre,
+        email: req.body.email,
+        password: req.body.password,
+    };
+    Usuarioa.findByIdAndUpdate(req.params.id, {$set:user}, {new : true}, (err, docs)=>{
+        if (!err) {res.send(docs);}
+        else {console.log("Error actualizando al usuario:" + JSON.stringify(err, undefined,2));}
+    });
+};
+
+let eliminarUsuario = (req, res) => {
+    if(!ObjectId.isValid(req.params.id))
+     return res.status(400).send(`no hay registro con el id: ${req.params.id}`);
+
+    Usuarioa.findByIdAndRemove(req.params.id, (err, docs)=>{
+        if (!err) {res.send(docs);}
+        else {console.log("Error eliminando el usuario:" + JSON.stringify(err, undefined,2));}
+    });
+};
+
+
+module.exports = {
+    obtenerUsuario,
+    crearUsuario,
+    buscarUsuario,
+    actualizarUsuario,
+    eliminarUsuario
+}
