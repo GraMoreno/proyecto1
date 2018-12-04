@@ -4,15 +4,15 @@ var mongoose= require('mongoose');
 var Schema= mongoose.Schema;
 //create of model
 let modeloCategoria = Schema({
-    nombre:{type: String, require: true},
+    nombre: {type: String, require: true},
     descripcion: {type: String,require: true}
 });
 
 module.exports = mongoose.model('categorias',modeloCategoria);
 
-let referenceCategoria = Schema({
-    nombre: { type: String, require: true },
-    descripcion: { type: String, require: true }
-});
+//let referenceCategoria = Schema({
+ //   nombre: { type: String, require: true },
+//    descripcion: { type: String, require: true }
+//});
 
-module.exports = mongoose.model('categorias', referenceCategoria);
+//module.exports = mongoose.model('categorias', referenceCategoria);
