@@ -14,7 +14,7 @@ export class UsuarioService {
   readonly URL_API= 'http://localhost:3000/api/usuarios';
 
   constructor(public http: HttpClient) {
-    this.selectedUser = new Usuario();
+   this.selectedUser = new Usuario();
     
     const token = localStorage.getItem('token');
     if (token) {
@@ -38,11 +38,9 @@ export class UsuarioService {
     return this.http.post(this.URL_API, user);
   }
  
-
-  async login(nombre, email, password) {
+  async login(email, password) {
     return new Promise((resolve, reject) => {
       const body = {
-        nombre,
         email,
         password
       };
