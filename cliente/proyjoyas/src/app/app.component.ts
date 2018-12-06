@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
+import {UsuarioService} from '.././app/services/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,7 @@ import { Component } from '@angular/core';
 //}
 export class AppComponent {
 //categorias;
+  constructor(public userSv: UsuarioService, public router: Router) {}
   //constructor(){
    // this.categorias = [
     //  {
@@ -28,6 +31,15 @@ export class AppComponent {
    // ]
   //}
   title = 'proyjoyas';
+  get logged() {
+    return this.userSv.logueado;
+  }
+
+  cerrarSesion() {
+    this.userSv.cerrarSesion();
+    this.router.navigateByUrl('inicio');
+  }
+
 }
 
 
