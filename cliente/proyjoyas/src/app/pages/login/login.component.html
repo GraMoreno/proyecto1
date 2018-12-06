@@ -8,15 +8,15 @@
                 <form (submit)="probarLogin()">
                   <h1 class="h3 mb-3 font-weight-normal">Login</h1>
                   <div class="form-group">
-                    <input type="text" name="name" class="form-control" [(ngModel)]="nombre" required aria-describedby="nombrehelp" placeholder="Nombre">
-                  </div>
-                  <div class="form-group">
-                      <input type="text" name="email" class="form-control" [(ngModel)]="email" required aria-describedby="emailhelp" placeholder="Email">
-                  </div>
-                  <div class="form-group">
-                        <input type="password" name="password" class="form-control" [(ngModel)]="password" required placeholder="Contraseña">
-                  </div>
-                  <button type="submit" class="btn btn-lg primary btn-block">Ingresar</button>
+                      <label>Email</label>
+                      <input type="email" class="form-control" [(ngModel)]="email" name="email" aria-describedby="emailHelp"
+                        placeholder="Ingresar email...">
+                    </div>
+                    <div class="form-group">
+                      <label>Contraseña</label>
+                      <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Contraseña">
+                    </div>
+                  <button type="submit" class="btn btn-primary">Ingresar</button>
                 </form>
               </div>
             </div>
