@@ -6,7 +6,7 @@
 var jwt = require("jwt-simple");
 
 // Definimos clave secreta para el hash
-var secret = "claveSecreta";
+var secret = "1234";
 
 let verificarUsuario = (req, res, next) => {
   // Recibimos los datos de la request. Var next es de middlewares
