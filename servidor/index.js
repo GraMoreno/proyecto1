@@ -47,6 +47,7 @@ app.use(cors({origin:'http://localhost:4200'}));
 //routers
 app.use('/',indexRouter);
 
+
 //starting the server
 //app.listen(app.get('port'),()=>{
  //   console.log(`Server on port ${app.get('port')}`);
