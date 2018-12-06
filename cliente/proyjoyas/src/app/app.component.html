@@ -9,7 +9,7 @@
           <a class="nav-link" routerLink="Inicio" routerLinkActive="active" > Inicio </a>
         </li>
         <li class="nav-item " >
-          <a class="nav-link" routerLink="productos" routerLinkActive="active" > Producto </a>
+          <a class="nav-link" routerLink="verproducto" routerLinkActive="active" > Producto </a>
         </li>
         <li class="nav-item" *ngIf="!logged">
             <a class="nav-link" routerLink="login" routerLinkActive="active">Login</a>
@@ -21,7 +21,7 @@
           <a class="nav-link" routerLink="perfil" routerLinkActive="active"> Mi Perfil</a>
         </li>
         <li class="nav-item" *ngIf="logged">
-          <a class="nav-link" routerLink="categoria" routerLinkActive="active"> Categoria Entrada</a>
+          <a class="nav-link" routerLink="productos" routerLinkActive="active"> Productos Entrada</a>
         </li>
         <li class="nav-item" *ngIf="logged">
           <a class="nav-link" (click)="cerrarSesion()">Cerrar Sesión</a>
