@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
+// Importamos el middleware para manejar authenticacion
+var md_auth = require ('../middlewares/auth');
+
 
 let userController = require('../controladores/c-usuario');
+let usuarioController = require('../controladores/controlador-usuarios');
 
 //Importamos el controlador del elemento categoria
 let catController = require('../controladores/controlador-categorias');
@@ -22,6 +26,11 @@ router.post('/usuarioa', userController.crearUsuario);
 router.get('/usuarioa/:id',userController.buscarUsuario);
 router.put('/usuarioa/:id',userController.actualizarUsuario);
 router.delete('/usuarioa/:id', userController.eliminarUsuario);
+ //para leer ruta usuario login
+ router.get('/api/usuarios',usuarioController.obtenerUsuarios);
+ router.post('/api/usuarios/registro',usuarioController.crearUsuario);
+ router.post('api/usuarios/login',usuarioController.login);
+router.get('/api/usuarios/prueba',md_auth,usuarioController.prueba);
 
 
 //para el resto de los modelos
