@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductoComponent } from '../../app/pages/producto/producto.component'
 
 import { Producto } from '../models/producto.model';
@@ -18,11 +18,31 @@ export class ProductoService {
   constructor(public http: HttpClient) { 
     this.selectProducto = new Producto();
   }
+  postProducto(prod : Producto) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({'Authorization': token});
+
+    headers.append('authorization', token);
+   ///const body = {
+    //  codigo,
+    //nombre,
+     // descripcion,
+    //precio,
+     // imagen,
+      //categoria
+    //};
+    return new Promise((resolve, reject) => {
+      this.http.post(this.baseURL, prod, {headers}).toPromise()
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    });
+  }
 
   //para enviar los datos de productos agregados al servidor
-  postProducto(prod: Producto){
-    return this.http.post(this.baseURL,prod).toPromise();
-  }
+ // postProducto(prod: Producto){
+  //  return this.http.post(this.baseURL,prod).toPromise();
+  //}
+  
 //para obtener los datos
   getproductoList(){
     return this.http.get(this.baseURL).toPromise();
