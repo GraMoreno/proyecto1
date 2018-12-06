@@ -26,6 +26,11 @@ export class ProductoComponent implements OnInit {
     this.productoservice.selectProducto= new Producto();
   }
 
+  publicar(prod: Producto) {
+    console.log(this.productoservice);
+    this.productoservice.postProducto(this.productoservice.selectProducto);
+  }
+
 addProducto(form : NgForm){
   if (form.value._id) {
     this.productoservice.putProducto(form.value)
