@@ -16,15 +16,17 @@ import { FormsModule } from '@angular/forms';
 import { VerificarLogueadoService } from './services/verificar-logueado.service';
 import { VerproductosComponent } from './pages/verproductos/verproductos.component';
 import { ProductoComponent } from './pages/producto/producto.component';
+import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
+import { ProductoService } from './services/producto.service';
 
 export const RUTAS: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent},
   { path: 'crearusuario', component: CrearUserComponent },
   { path: 'verproducto', component:VerproductosComponent},
-  { path: 'productos', component:ProductoComponent},
-  //{ path: 'perfil', component: MiPerfilComponent, canActivate: [VerificarLogueadoService] },
-  //{ path: 'publicar', component: AgregarEntradaComponent, canActivate: [VerificarLogueadoService] },
+ // { path: 'productos', component:ProductoComponent},
+  { path: 'perfil', component: MiPerfilComponent, canActivate: [VerificarLogueadoService] },
+  { path: 'productos', component: ProductoComponent, canActivate: [VerificarLogueadoService] },
   //{ path: 'editar', component: EditarEntradaComponent, canActivate: [VerificarLogueadoService] },
   { path: '**', redirectTo: '' },
 ];
@@ -39,7 +41,8 @@ export const RUTAS: Routes = [
     LoginComponent,
     CrearUserComponent,
     VerproductosComponent,
-    ProductoComponent
+    ProductoComponent,
+    MiPerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,7 @@ export const RUTAS: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [VerificarLogueadoService, UsuarioService],
+  providers: [VerificarLogueadoService, UsuarioService, ProductoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
