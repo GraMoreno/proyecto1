@@ -2,8 +2,8 @@
 
 'use strict'
 
-var jwt = require("jwt-simple");
-var secret = "claveSecreta";
+var jwt = require('jwt-simple');
+var secret = "1234";
 //Creamos una funcion que recibe un usuario para generar el JWT
 exports.createToken = user => {
   // Definimos estrucutra del token
